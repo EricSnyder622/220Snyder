@@ -1,28 +1,48 @@
-create table customers
-(
-    id        int auto_increment
-        primary key,
-    firstname varchar(20) null,
-    lastname  varchar(20) null,
-    company   varchar(20) null,
-    constraint id
-        unique (id)
+CREATE DATABASE store;
+USE store;
+
+CREATE TABLE customers (
+    id int NOT NULL UNIQUE AUTO_INCREMENT,
+    name varchar(20) NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE orders (
+    id int NOT NULL UNIQUE AUTO_INCREMENT,
+    orders varchar(20) NOT NULL,
+    PRIMARY KEY (id)
 );
 
-create table orders
-(
-    id         int auto_increment
-        primary key,
-    product    varchar(20) null,
-    cost       int         null,
-    customerId int         null,
-    constraint id
-        unique (id),
-    constraint orders_ibfk_1
-        foreign key (customerId) references customers (id)
+CREATE TABLE products (
+    id int NOT NULL UNIQUE AUTO_INCREMENT,
+    product varchar(20) NOT NULL,
+    PRIMARY KEY (id)
 );
 
-create index customerId
-    on orders (customerId);
+CREATE TABLE order_product_association(
+  id int NOT NULL UNIQUE AUTO_INCREMENT,
+  order_id int NOT NULL,
+  product_id int NOT NULL,
+  PRIMARY KEY (id)
+);
+
+
+INSERT INTO customers ( name ) VALUES
+                                    ('Jim'),
+                                    ('John'),
+                                    ('Jeff');
+INSERT INTO orders ( orders ) VALUES
+                                    ('chips'),
+                                    ('pizza'),
+                                    ('marinara');
+INSERT INTO products ( product ) VALUES
+                                    ('snack'),
+                                    ('meal'),
+                                    ('sauce');
+
+SELECT * from orders;
+SELECT * from products;
+SELECT * from order_product_association;
+
+INSERT INTO order_product_association (order_id, product_id) VALUES (3,3)
 
 
