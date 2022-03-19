@@ -19,6 +19,8 @@ CREATE TABLE student (
    id int NOT NULL UNIQUE AUTO_INCREMENT,
    firstname varchar(15) NOT NULL,
    lastname varchar(15) NOT NULL,
+   grade_id int NOT NULL,
+   address_id int NOT NULL,
    PRIMARY KEY (id)
 );
 
