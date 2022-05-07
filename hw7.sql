@@ -36,5 +36,3 @@ create table products
     constraint id
         unique (id)
 );
-
-
